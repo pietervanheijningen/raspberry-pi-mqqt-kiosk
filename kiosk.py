@@ -43,10 +43,6 @@ def on_message(client, userdata, msg):
     if command.startswith("url:"):
         url = command[4:]
         set_url(url)
-    elif command == "screen_off":
-        os.system("vcgencmd display_power 0")
-    elif command == "screen_on":
-        os.system("vcgencmd display_power 1")
 
 
 # Read the last URL from the file on startup and launch the browser with it
