@@ -24,12 +24,14 @@ def set_url(url):
     os.system(f"2>/dev/null 1>&2 /usr/bin/chromium-browser --noerrdialogs --disable-infobars --kiosk \"{url}\" /dev/null &")
 
     # beun way to submit any forms
-    time.sleep(5)  # wait for things to load
+    time.sleep(6)  # wait for things to load
+    os.system("xdotool key Return")
+    os.system("xdotool click 1")
+    time.sleep(3)
     os.system("xdotool key Return")
     os.system("xdotool click 1")
     time.sleep(1)
     os.system("xdotool key Return")
-    os.system("xdotool click 1")
 
 
     # Write the URL to url.txt
