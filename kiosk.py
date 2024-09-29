@@ -17,6 +17,7 @@ URL_FILE = "/home/pi/raspberry-pi-mqqt-kiosk/url.txt"
 def set_url(url):
     print(f"displaying url: {url}")
     """Launch the Chromium browser in kiosk mode with the given URL and store the URL in a file."""
+    os.system("pkill -f chromium-browser")
     os.system(f"2>/dev/null 1>&2 /usr/bin/chromium-browser --noerrdialogs --disable-infobars --kiosk {url} /dev/null &")
 
     # Write the URL to url.txt
