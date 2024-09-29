@@ -9,4 +9,4 @@ sed -i 's/"exited_cleanly":false/"exited_cleanly":true/' /home/$USER/.config/chr
 sed -i 's/"exit_type":"Crashed"/"exit_type":"Normal"/' /home/$USER/.config/chromium/Default/Preferences
 
 
-/usr/bin/chromium-browser --noerrdialogs --disable-infobars --kiosk https://time.is
+python -u /home/pi/raspberry-pi-mqqt-kiosk/kiosk.py
