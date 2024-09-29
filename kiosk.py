@@ -15,6 +15,7 @@ MQTT_PASSWORD = os.getenv("MQTT_PASSWORD")
 URL_FILE = "/home/pi/raspberry-pi-mqqt-kiosk/url.txt"
 
 def set_url(url):
+    print(f"displaying url: {url}")
     """Launch the Chromium browser in kiosk mode with the given URL and store the URL in a file."""
     os.system(f"2>/dev/null 1>&2 /usr/bin/chromium-browser --noerrdialogs --disable-infobars --kiosk {url} /dev/null &")
 
@@ -40,6 +41,7 @@ def on_connect(client, userdata, flags, rc):
 def on_message(client, userdata, msg):
     """Handle messages received via MQTT and take appropriate actions."""
     command = msg.payload.decode()
+    print(f"got message: {command}")
     if command.startswith("url:"):
         url = command[4:]
         set_url(url)
