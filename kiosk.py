@@ -1,3 +1,5 @@
+import time
+
 import paho.mqtt.client as mqtt
 import os
 from dotenv import load_dotenv
@@ -14,11 +16,21 @@ MQTT_PASSWORD = os.getenv("MQTT_PASSWORD")
 # Path to the file storing the last URL
 URL_FILE = "/home/pi/raspberry-pi-mqqt-kiosk/url.txt"
 
+
 def set_url(url):
     print(f"displaying url: {url}")
     """Launch the Chromium browser in kiosk mode with the given URL and store the URL in a file."""
     os.system("pkill -f chromium-browser")
     os.system(f"2>/dev/null 1>&2 /usr/bin/chromium-browser --noerrdialogs --disable-infobars --kiosk {url} /dev/null &")
+
+    # beun way to submit any forms
+    time.sleep(5)  # wait for things to load
+    os.system("xdotool key Return")
+    os.system("xdotool click 1")
+    time.sleep(1)
+    os.system("xdotool key Return")
+    os.system("xdotool click 1")
+
 
     # Write the URL to url.txt
     with open(URL_FILE, "w") as file:
