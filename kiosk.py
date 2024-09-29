@@ -25,11 +25,10 @@ def set_url(url):
 
     # beun way to submit any forms
     time.sleep(6)  # wait for things to load
-    os.system("xdotool key Return")
     os.system("xdotool click 1")
+    os.system("xdotool key Return")
     time.sleep(3)
     os.system("xdotool key Return")
-    os.system("xdotool click 1")
     time.sleep(1)
     os.system("xdotool key Return")
 
